@@ -1,40 +1,34 @@
+'user strict';
+
 import React, {Component} from 'react';
 
 let related = [];
 
 let Artist = React.createClass({
     render: function () {
-        let artistUrl = this.props.aristId;
-        const url = 'https://api.spotify.com/v1/artists/' + artistUrl + '/related-artists';
-        fetch(url)
-        .then(function(response) {
-            return response.json()
-        }).then(function(json) {
-            let data = json;
-            let related = data.artists;
-        });
-        return (
-            <div className='artist'>
-                <h1>{this.props.aristId}</h1>
-                <RelatedArtists artists={related} />
-            </div>
-            )
+        if(this.props.artist !== null) {
+            let url = 'https://api.spotify.com/v1/artists/' + this.props.artist + '/related-artists';
+            fetch(url)
+            .then(function(response) {
+                return response.json()
+            }).then(function(json) {
+                let data = json;
+                related = data.artists;
+            });
         }
-})
-
-let RelatedArtists = React.createClass({
-    render: function() {
-        let listItems = this.props.artists.map(function(artist, i) {
+        const listItems = related.map((artist, i) => {
             return (
-                <li key={artist.name}>
-                    <a onClick={handleClick.bind(artist, i)} key={i} className=''>{artist.name} / {i}</a>
-                </li>
+                <div key={artist.name}>
+                    <img src={artist.images[2].url} />
+                    <a className=''>{artist.name}</a>
+                </div>
             );
         });
         return (
-        <p>
-            {listItems},
-        </p>
+            <div>
+                <h2>Related artists</h2>
+                {listItems}
+            </div>
         );
     }
 })

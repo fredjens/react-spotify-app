@@ -7,26 +7,27 @@ import Artist from './artist';
 let Main = React.createClass({
     getInitialState: function(){
       return ({
-          artistId: '1dQNpgaoBQTyrZu61CX3NP',
-          artistName: 'Whatever'
+          artistId: null,
+          artistName: null,
+          artists: []
       });
     },
-    setArtist: function(i) {
-        let name = artists[i].name;
-        let id = artists[i].id;
-        artist.push(id);
-        console.log(name, id);
+    setArtist: function(artist) {
+        console.log(artist);
         this.setState({
-            artistId: id,
-            artistName: name
+            artistId: artist.id,
+            artistName: artist.name
+            artistImage: artist.images[1].url
         });
     },
     render: function() {
         return (
             <div className=''>
                 <p>Spotify</p>
+                <Search text="Artist" artistHandler={this.setArtist} />
+                <img src={this.state.artistImage}
                 <h1>{this.state.artistName}</h1>
-                <Search artistHandler={this.setArtist} />
+                <Artist artist={this.state.artistId} />
             </div>
         )
     }

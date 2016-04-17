@@ -1,13 +1,14 @@
+'user strict';
+
 import React, {Component} from 'react';
 import 'whatwg-fetch';
 
-let artist = [];
 let artists = [];
 
 let Search = React.createClass({
     getInitialState: function() {
         return {
-            value: null
+            inputValue: ''
         }
     },
     handleChange: function(artist) {
@@ -19,44 +20,42 @@ let Search = React.createClass({
             let data = json;
             artists = data.artists.items;
         })
-
-        this.setState(artists);
+        this.setState({
+            inputValue: artist.target.value
+        });
+    },
+    handleClick: function(artist) {
+        this.props.artistHandler(artist);
+        artists = [];
+        this.setState({
+            inputValue: ''
+        });
     },
     render: function () {
+        const listItems = artists.map((artist, i) => {
+            return (
+                <li key={artist.name}>
+                    <a onClick={this.handleClick.bind(this, artist)}
+                     className=''>{artist.name}</a>
+                </li>
+            );
+        });
         return (
             <div className='search'>
                 <input
                     type="text"
                     placeholder="search"
                     onChange={this.handleChange}
-                    value={this.props.value}
+                    value={this.state.inputValue}
                 />
-                <SearchResult artists={artists} />
+                <div>
+                    <ul>
+                        {listItems}
+                    </ul>
+                </div>
             </div>
         );
     }
 });
-
-let SearchResult = React.createClass({
-    handleClick: function(artist, i) {
-        this.props.artistHandler(artist);
-    },
-    render: function() {
-        const listItems = this.props.artists.map((artist, i) => {
-            return (
-                <li key={artist.name}>
-                    <a onClick={this.handleClick(artist, i)} key={i} className=''>{artist.name} / {i}</a>
-                </li>
-            );
-        });
-        return (
-            <div>
-                <ul>
-                    {listItems}
-                </ul>
-            </div>
-        );
-    }
-})
 
 export default Search;
