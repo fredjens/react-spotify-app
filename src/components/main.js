@@ -16,7 +16,7 @@ let Main = React.createClass({
         console.log(artist);
         this.setState({
             artistId: artist.id,
-            artistName: artist.name
+            artistName: artist.name,
             artistImage: artist.images[1].url
         });
     },
@@ -25,7 +25,7 @@ let Main = React.createClass({
             <div className=''>
                 <p>Spotify</p>
                 <Search text="Artist" artistHandler={this.setArtist} />
-                <img src={this.state.artistImage}
+                <img src={this.state.artistImage} />
                 <h1>{this.state.artistName}</h1>
                 <Artist artist={this.state.artistId} />
             </div>
