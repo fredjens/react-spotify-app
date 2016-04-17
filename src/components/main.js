@@ -25,7 +25,7 @@ const Main = React.createClass({
                 <p>Spotify</p>
                 <img src={this.state.artistImage} />
                 <h1>{this.state.artistName}</h1>
-                <RelatedArtists active={this.setArtist} artist={this.state.artistId} />
+                <RelatedArtists artistHandler={this.setArtist} artist={this.state.artistId} />
                 <Search text="Artist" artistHandler={this.setArtist} />
             </div>
         )

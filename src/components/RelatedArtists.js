@@ -5,7 +5,13 @@ import React, {Component} from 'react';
 let related = [];
 
 const RelatedArtists = React.createClass({
-    render: function () {
+    handleClick: function(artist) {
+        this.props.artistHandler(artist);
+        this.setState({
+            inputValue: ''
+        });
+    },
+    render: function(newProps) {
         if(this.props.artist) {
             let url = 'https://api.spotify.com/v1/artists/' + this.props.artist + '/related-artists';
             fetch(url)
@@ -15,13 +21,12 @@ const RelatedArtists = React.createClass({
                 let data = json;
                 related = data.artists;
             });
-            console.log(related);
-            const listItems = related.map((artist, i) => {
+            const listItems = related.map((artist) => {
                 return (
-                    <div key={artist.name}>
+                    <a onClick={this.handleClick.bind(this, artist)} key={artist.name}>
                         <img src={artist.images[2].url} />
-                        <a className=''>{artist.name}</a>
-                    </div>
+                        <p className=''>{artist.name}</p>
+                    </a>
                 );
             });
             return (
