@@ -5,7 +5,7 @@ import 'whatwg-fetch';
 
 let artists = [];
 
-let Search = React.createClass({
+const Search = React.createClass({
     getInitialState: function() {
         return {
             inputValue: ''
@@ -24,22 +24,7 @@ let Search = React.createClass({
             inputValue: artist.target.value
         });
     },
-    handleClick: function(artist) {
-        this.props.artistHandler(artist);
-        artists = [];
-        this.setState({
-            inputValue: ''
-        });
-    },
     render: function () {
-        const listItems = artists.map((artist, i) => {
-            return (
-                <li key={artist.name}>
-                    <a onClick={this.handleClick.bind(this, artist)}
-                     className=''>{artist.name}</a>
-                </li>
-            );
-        });
         return (
             <div className='search'>
                 <input
@@ -48,14 +33,34 @@ let Search = React.createClass({
                     onChange={this.handleChange}
                     value={this.state.inputValue}
                 />
-                <div>
-                    <ul>
-                        {listItems}
-                    </ul>
-                </div>
+                <SearchResult artists={artists} />
             </div>
         );
     }
 });
+
+const SearchResult = React.createClass({
+    handleClick: function(artist) {
+        return function() {
+            return this.props.artistHandler(artist);
+        };
+    },
+    render: function() {
+        const listItems = this.props.artists.map((artist, i) => {
+            return (
+                <li key={artist.name}>
+                    <a onClick={this.handleClick(artist)} key={i}>{artist.name} / {i}</a>
+                </li>
+            );
+        });
+        return (
+            <div>
+                <ul>
+                    {listItems}
+                </ul>
+            </div>
+        );
+    }
+})
 
 export default Search;

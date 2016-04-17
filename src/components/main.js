@@ -2,9 +2,9 @@
 
 import React, {Component} from 'react';
 import Search from './search';
-import Artist from './artist';
+import RelatedArtists from './RelatedArtists';
 
-let Main = React.createClass({
+const Main = React.createClass({
     getInitialState: function(){
       return ({
           artistId: null,
@@ -13,7 +13,6 @@ let Main = React.createClass({
       });
     },
     setArtist: function(artist) {
-        console.log(artist);
         this.setState({
             artistId: artist.id,
             artistName: artist.name,
@@ -24,10 +23,10 @@ let Main = React.createClass({
         return (
             <div className=''>
                 <p>Spotify</p>
-                <Search text="Artist" artistHandler={this.setArtist} />
                 <img src={this.state.artistImage} />
                 <h1>{this.state.artistName}</h1>
-                <Artist artist={this.state.artistId} />
+                <RelatedArtists active={this.setArtist} artist={this.state.artistId} />
+                <Search text="Artist" artistHandler={this.setArtist} />
             </div>
         )
     }
