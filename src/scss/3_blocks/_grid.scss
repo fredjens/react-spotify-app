@@ -1,0 +1,21 @@
+.grid {
+
+    &__half {
+        @include breakpoint(large) {
+            @include span(6);
+            @include push(3);
+            padding: spacing(large) 0;
+        }
+    }
+
+    &__item {
+        @include breakpoint(large) {
+            @include span(4);
+            padding: spacing(large) 0;
+        }
+
+        &:first-child {
+            @include push(2);
+        }
+    }
+}

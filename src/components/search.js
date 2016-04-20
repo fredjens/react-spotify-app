@@ -1,9 +1,9 @@
 'user strict';
 
-import React, {Component} from 'react';
+import React from 'react';
+import { Router, Link } from 'react-router';
 import 'whatwg-fetch';
 
-let artist = {};
 let artists = [];
 
 const Search = React.createClass({
@@ -25,22 +25,13 @@ const Search = React.createClass({
             inputValue: artist.target.value
         });
     },
-    handleClick: function(artist) {
-        this.props.artistHandler(artist);
-        artists = [];
-        this.setState({
-            inputValue: ''
-        });
+    cleanSearch: function() {
+       this.setState({
+           inputValue: ' '
+       });
+       artists = [ ];
     },
     render: function () {
-        const listItems = artists.map((artist) => {
-            return (
-                <li key={artist.name}>
-                    <a onClick={this.handleClick.bind(this, artist)}
-                     className=''>{artist.name}</a>
-                </li>
-            );
-        });
         return (
             <div className='search'>
                 <input
@@ -49,11 +40,29 @@ const Search = React.createClass({
                     onChange={this.handleChange}
                     value={this.state.inputValue}
                 />
-                <div>
-                    <ul>
-                        {listItems}
-                    </ul>
-                </div>
+                <Searchresult artists={artists} searchHandler={this.cleanSearch}  />
+            </div>
+        );
+    }
+});
+
+const Searchresult = React.createClass({
+    handleClick: function(artist) {
+       this.props.searchHandler();
+    },
+    render: function() {
+        const listItems = this.props.artists.map((artist) => {
+            return (
+                <li key={artist.name}>
+                    <Link onClick={this.handleClick} to={`/artists/${artist.id}`}>{artist.name}</Link>
+                </li>
+            );
+        });
+        return (
+            <div>
+                <ul>
+                    {listItems}
+                </ul>
             </div>
         );
     }

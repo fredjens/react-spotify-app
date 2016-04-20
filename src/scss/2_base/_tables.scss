@@ -1,0 +1,19 @@
+
+table {
+    border: 0;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+caption {
+    text-align: left;
+}
+
+th, td {
+    vertical-align: middle;
+}
+
+td + * {
+    padding: spacing(small);
+}

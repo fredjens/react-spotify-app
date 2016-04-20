@@ -1,0 +1,36 @@
+/*
+Icon
+
+Styling for SVG icons.
+
+Markup:
+<svg class="icon">
+  <use xlink:href="#{{modifier_class}}" />
+</svg>
+
+locked - Locked
+unlocked - Unclocked
+shell - Shell
+smartplug - Smartplug
+camera - Camera
+temperature - Temperature
+lock - Lock
+
+Styleguide 3.7
+*/
+
+.icon {
+    display: inline;
+    margin: spacing(medium) 0;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    fill: color(black);
+
+    &--small {
+        width: 5rem;
+        height: 5rem;
+        vertical-align: middle;
+    }
+
+}

@@ -1,0 +1,47 @@
+
+html {
+    height: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+    text-size-adjust: 100%;
+    padding: 2rem;
+    background: #eee;
+}
+
+* {
+    &:before,
+    &:after {
+        box-sizing: inherit;
+    }
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block;
+}
