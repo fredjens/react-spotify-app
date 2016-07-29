@@ -9,13 +9,8 @@
     }
 
     &__item {
-        @include breakpoint(large) {
-            @include span(4);
-            padding: spacing(large) 0;
-        }
-
-        &:first-child {
-            @include push(2);
-        }
+        width: 200px;
+        display: inline-block;
+        margin: 20px;
     }
 }

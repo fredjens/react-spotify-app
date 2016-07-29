@@ -2,71 +2,41 @@
 
 import React from 'react';
 import { Router, Link } from 'react-router';
-import 'whatwg-fetch';
+import { searchArtists } from '../services';
+import SearchResult from './searchResult';
 
-let artists = [];
-
-const Search = React.createClass({
-    getInitialState: function() {
-        return {
+class Search extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            artists: [],
             inputValue: ''
-        }
-    },
-    handleChange: function(artist) {
-        const url = 'https://api.spotify.com/v1/search?q=' + artist.target.value + '*&type=artist';
-        fetch(url)
-        .then(function(response) {
-            return response.json()
-        }).then(function(json) {
-            let data = json;
-            artists = data.artists.items;
-        })
-        this.setState({
-            inputValue: artist.target.value
+        };
+    }
+
+    handleChange(event) {
+        searchArtists(event.target.value).then(artists => {
+            this.setState({
+                artists
+            });
         });
-    },
-    cleanSearch: function() {
-       this.setState({
-           inputValue: ' '
-       });
-       artists = [ ];
-    },
-    render: function () {
+        this.setState({inputValue: event.target.value });
+    }
+
+    render() {
         return (
             <div className='search'>
                 <input
                     type="text"
                     placeholder="search"
-                    onChange={this.handleChange}
                     value={this.state.inputValue}
+                    onChange={this.handleChange.bind(this)}
+                    autoFocus
                 />
-                <Searchresult artists={artists} searchHandler={this.cleanSearch}  />
+                <SearchResult artists={this.state.artists} />
             </div>
         );
     }
-});
-
-const Searchresult = React.createClass({
-    handleClick: function(artist) {
-       this.props.searchHandler();
-    },
-    render: function() {
-        const listItems = this.props.artists.map((artist) => {
-            return (
-                <li key={artist.name}>
-                    <Link onClick={this.handleClick} to={`/artists/${artist.id}`}>{artist.name}</Link>
-                </li>
-            );
-        });
-        return (
-            <div>
-                <ul>
-                    {listItems}
-                </ul>
-            </div>
-        );
-    }
-});
-
+}
 
 export default Search;
