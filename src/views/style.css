@@ -1,0 +1,25 @@
+@import 'https://fonts.googleapis.com/css?family=Space+Mono';
+
+body {
+    background: var(--black);
+    flex: flex;
+    font-family: var(--font);
+    color: var(--grayLight);
+    padding: 2rem;
+    font-weight: 100;
+}
+
+a {
+    color: var(--green);
+    text-decoration: none;
+    transition: color ease-out 400ms;
+    font-weight: 100;
+
+    &:hover {
+        color: var(--green);
+    }
+}
+
+.title {
+    position: fixed;
+}

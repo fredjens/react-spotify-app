@@ -1,6 +1,8 @@
 
 import React from 'react';
 
+import './style.css';
+
 const Image = props => {
     if(typeof props.url === 'undefined') {
         return <div>No image...</div>;

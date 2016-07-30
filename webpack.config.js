@@ -1,7 +1,11 @@
 'use strict'
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+var cssnext = require('postcss-cssnext');
+var variables = require("./src/variables");
+var forLoop =  require('postcss-for');
+
+var HtmlWebpack = require('html-webpack-plugin');
+var html = new HtmlWebpack({
     template: __dirname + '/src/index.html',
     filename: 'index.html',
     inject: 'body'
@@ -23,10 +27,22 @@ module.exports = {
                 loaders: ['react-hot', 'babel-loader']
             },
             {
-                test: /\.scss$/,
-                loaders: ['style', 'css', 'sass']
+                test:   /\.css$/,
+                loader: 'style-loader!css-loader!postcss-loader'
             }
         ]
     },
-    plugins: [HTMLWebpackPluginConfig]
+    plugins: [html],
+    postcss: function () {
+        return [
+            forLoop,
+            cssnext({
+                features: {
+                    customProperties:{
+                        variables: variables
+                    }
+                }
+            })
+        ];
+    }
 }

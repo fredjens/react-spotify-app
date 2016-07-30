@@ -1,0 +1,45 @@
+
+
+.artistImage {
+    position: fixed;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    animation: fadeIn 1000ms;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .8);
+    }
+}
+
+.artistName {
+    position: fixed;
+    top: 10%;
+    width: 100%;
+    font-size: 6rem;
+    font-weight: 800;
+}
+
+.searchAgain {
+    position: fixed;
+    right: 2.5rem;
+    top: 2.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

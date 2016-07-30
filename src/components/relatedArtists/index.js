@@ -1,8 +1,10 @@
 'user strict';
 
 import React from 'react';
-import Image from './image';
+import Image from '../image';
 import { Link } from 'react-router';
+
+import './style.css';
 
 class RelatedArtists extends React.Component {
     updateArtist(id) {
@@ -12,17 +14,18 @@ class RelatedArtists extends React.Component {
     render() {
         const related = this.props.artists.map((artist) => {
             return (
-                <div key={artist.name} className="grid__item">
-                    <Link to={`/artists/${artist.id}`} onClick={this.updateArtist.bind(this, artist.id)}>
+                    <Link to={`/artists/${artist.id}`} onClick={this.updateArtist.bind(this, artist.id)} key={artist.name} className="relatedArtist">
+                        <h2 className="relatedArtist__title">{artist.name}</h2>
                         <Image url={artist.images} />
-                        <h2>{artist.name}</h2>
                     </Link>
-                </div>
             );
         });
         return (
             <div>
-                {related}
+                <div className="related">
+                    <h2 className="related__title">Related artists</h2>
+                    {related}
+                </div>
             </div>
         )
     }

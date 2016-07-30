@@ -1,14 +1,13 @@
 'user strict';
 
 import React from 'react';
-import Search from './search';
-import { Router, Link } from 'react-router';
+import Search from '../../components/search';
+import SearchTrack from '../../components/searchTrack';
 
 class Home extends React.Component {
     render() {
         return (
             <div className=''>
-                <Link to="/">Spotify Machine</Link>
                 <Search />
             </div>
         )

@@ -1,0 +1,28 @@
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+ul li {
+    opacity: 0;
+    font-weight: 100;
+
+    @for $i from 1 to 20 {
+        animation: fadeIn 500ms forwards;
+        &:nth-child($i)  {
+            animation-delay: calc($i * 50)ms;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

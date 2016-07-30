@@ -1,4 +1,4 @@
-# 🎵Spotify + React 
+# 🎵 Spotify + React 
 
 ```npm run dev```
 

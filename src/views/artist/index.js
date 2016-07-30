@@ -2,9 +2,11 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import { getArtist, getRelatedArtists } from '../services';
-import Image from './image';
-import RelatedArtists from './relatedArtists';
+import { getArtist, getRelatedArtists } from '../../services';
+import Image from '../../components/image';
+import RelatedArtists from '../../components/relatedArtists';
+
+import './style.css';
 
 class Artist extends React.Component {
     constructor(props) {
@@ -32,10 +34,13 @@ class Artist extends React.Component {
         const artist = this.state.artist;
         return (
             <div>
-                <Link to="/">Search</Link>
-                <Image url={artist.images} />
-                <h1>{artist.name}</h1>
-                <h2>Related artists</h2>
+                <div className="searchAgain">
+                    <Link to="/">Search</Link>
+                </div>
+                <div className="artistImage">
+                    <Image url={artist.images} />
+                </div>
+                <h1 className="artistName">{artist.name}</h1>
                 <RelatedArtists artists={this.state.related} handleclick={this.getData.bind(this)} />
             </div>
         );
