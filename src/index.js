@@ -9,3 +9,6 @@ ReactDOM.render(
     routes,
     document.getElementById('app')
 );
+
+
+console.log(window);

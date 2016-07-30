@@ -43,3 +43,9 @@
         opacity: 1;
     }
 }
+
+.genres {
+    position: fixed;
+    top: 18%;
+    color: var(--grayDark);
+}

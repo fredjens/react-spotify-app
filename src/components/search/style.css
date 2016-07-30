@@ -6,8 +6,9 @@
     width: 100%;
     font-family: var(--font);
     font-weight: 800;
-    position: absolute;
+    position: fixed;
     bottom: 50%;
+    animation: fadeIn 1000ms;
 
     &::placeholder {
         color: var(--grayDark);
@@ -17,5 +18,14 @@
         color: var(--grayDark);
         outline: none;
         text-shadow: none;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

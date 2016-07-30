@@ -41,6 +41,9 @@ class Artist extends React.Component {
                     <Image url={artist.images} />
                 </div>
                 <h1 className="artistName">{artist.name}</h1>
+                <div className="genres">
+                    {artist.genres}
+                </div>
                 <RelatedArtists artists={this.state.related} handleclick={this.getData.bind(this)} />
             </div>
         );
