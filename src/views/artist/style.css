@@ -8,7 +8,6 @@
     left: 0;
     z-index: -1;
     overflow: hidden;
-    animation: fadeIn 1000ms;
 
     &:before {
         content: '';
@@ -17,8 +16,19 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, .8);
+        background: rgba(0, 0, 0, .75);
     }
+}
+
+.artistImage--animate {
+    animation: fadeIn 1000ms;
+}
+
+.artistImage--loading {
+    content: 'loading...';
+    position: absolute;
+    font-size: 4rem;
+    background: black;
 }
 
 .artistName {
@@ -36,6 +46,15 @@
 }
 
 @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
     from {
         opacity: 0;
     }

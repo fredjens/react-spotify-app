@@ -12,14 +12,14 @@ ul li {
     font-weight: 100;
 
     @for $i from 1 to 20 {
-        animation: fadeIn 500ms forwards;
+        animation: fadeInResult 500ms forwards;
         &:nth-child($i)  {
             animation-delay: calc($i * 50)ms;
         }
     }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInResult {
     from {
         opacity: 0;
     }

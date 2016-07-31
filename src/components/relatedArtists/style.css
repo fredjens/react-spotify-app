@@ -1,27 +1,25 @@
 
 .related {
     position: absolute;
-    top: 80vh;
+    top: 40vh;
 
     &__title {
         margin-left: 3rem;
         font-size: 1rem;
-        text-align: center;
         position: fixed;
         width: 100%;
-        bottom: 175px;
+        top: 40vh;
         color: var(--grayDark);
     }
 }
 
 .relatedArtist {
-    width: 31vw;
-    height: 200px;
-    margin: 0;
+    width: 175px;
+    height: 175px;
     overflow: hidden;
     float: left;
-    opacity: 0;
     position: relative;
+    border-radius: 50%;
 
     &:before {
         content: '';
@@ -30,12 +28,12 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(35, 207, 95, .7);
+        background: rgba(35, 07, 85, .8);
         transition: background 200ms;
     }
 
     &:hover:before {
-        background: rgba(0, 0, 0, .8);
+        background: var(--green);
     }
 
     &__title {
@@ -47,23 +45,28 @@
         width: 100%;
         text-align: center;
         margin-top: 100px;
-        color: var(--black);
+        color: var(--white);
+
     }
 
     @for $i from 1 to 20 {
-        animation: fadeIn 1000ms forwards;
+        animation: fadeInImage 1000ms forwards;
+        animation-delay: 4000ms;
+        opacity: 0;
         &:nth-child($i)  {
             animation-delay: calc($i * 200)ms;
+            margin-left: calc($i * 20)px;
         }
     }
+}
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+@keyframes fadeInImage {
+    from {
+        transform: translateY(-100vh) scale(8);
+        opacity: 0;
     }
-
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }

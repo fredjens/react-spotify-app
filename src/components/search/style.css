@@ -8,7 +8,7 @@
     font-weight: 800;
     position: fixed;
     bottom: 50%;
-    animation: fadeIn 1000ms;
+    animation: fadeInSearch 1000ms;
 
     &::placeholder {
         color: var(--grayDark);
@@ -21,7 +21,7 @@
     }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInSearch {
     from {
         opacity: 0;
     }

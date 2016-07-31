@@ -7,7 +7,7 @@ import SearchTrack from '../../components/searchTrack';
 class Home extends React.Component {
     render() {
         return (
-            <div className=''>
+            <div>
                 <Search />
             </div>
         )
