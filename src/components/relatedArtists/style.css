@@ -4,12 +4,14 @@
     top: 40vh;
 
     &__title {
-        margin-left: 3rem;
-        font-size: 1rem;
+        margin-left: -4rem;
+        margin-top: 4rem;
+        font-size: .8rem;
+        letter-spacing: 2px;
+        color: rgba(85, 07, 205, .8);
+        transform: rotate(-90deg);
         position: fixed;
-        width: 100%;
-        top: 40vh;
-        color: var(--grayDark);
+        font-weight: 100;
     }
 }
 
@@ -50,8 +52,8 @@
     }
 
     @for $i from 1 to 20 {
-        animation: fadeInImage 1000ms forwards;
-        animation-delay: 4000ms;
+        animation: fadeInImage 400ms forwards cubic-bezier(.05,.7,.26,.99);
+        animation-delay: 800ms;
         opacity: 0;
         &:nth-child($i)  {
             animation-delay: calc($i * 200)ms;
@@ -62,11 +64,11 @@
 
 @keyframes fadeInImage {
     from {
-        transform: translateY(-100vh) scale(8);
+        transform: scale(.15);
         opacity: 0;
     }
     to {
-        transform: translateY(0) scale(1);
+        transform: scale(1);
         opacity: 1;
     }
 }

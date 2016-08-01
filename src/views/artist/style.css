@@ -21,7 +21,7 @@
 }
 
 .artistImage--animate {
-    animation: fadeIn 1000ms;
+    animation: fadeIn 10000ms cubic-bezier(.05,.7,.26,.99);
 }
 
 .artistImage--loading {
@@ -46,11 +46,15 @@
 }
 
 @keyframes fadeIn {
-    from {
+    0% {
+        transform: scale(1.15);
         opacity: 0;
     }
-    to {
+    40% {
         opacity: 1;
+    }
+    100% {
+        transform: scale(1);
     }
 }
 

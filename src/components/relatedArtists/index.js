@@ -14,7 +14,7 @@ class RelatedArtists extends React.Component {
     render() {
         const related = this.props.artists.map((artist) => {
             return (
-                    <Link to={`/artists/${artist.id}`} onClick={this.updateArtist.bind(this, artist.id)} key={artist.name} className="relatedArtist">
+                    <Link key={artist.id} to={`/artists/${artist.id}`} onClick={this.updateArtist.bind(this, artist.id)}  className="relatedArtist">
                         <h2 className="relatedArtist__title">{artist.name}</h2>
                         <Image url={artist.images} />
                     </Link>

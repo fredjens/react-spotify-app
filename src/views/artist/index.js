@@ -16,7 +16,9 @@ class Artist extends React.Component {
         this.state = {
             artist: '',
             loading: true,
-            related: []
+            related: [{
+                loading: true
+            }]
         };
     }
 
@@ -29,11 +31,9 @@ class Artist extends React.Component {
         console.log('loading');
         getArtist(id).then(artist => {
             this.setState({ artist, loading: false })
-            console.log('loading done');
         });
         getRelatedArtists(id).then(artists => {
             this.setState({ related: artists, loading: false  })
-            console.log('loading done');
         });
     }
 
@@ -45,7 +45,7 @@ class Artist extends React.Component {
           'artistImage--animate': !this.state.loading
         });
         return (
-            <div>
+            <div key={this.props.params.artistId}>
                 <div className="searchAgain">
                     <Link to="/">Search</Link>
                 </div>
