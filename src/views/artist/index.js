@@ -2,10 +2,11 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import { getArtist, getRelatedArtists } from '../../services';
+import { getArtist, getRelatedArtists, getArtistTopTracks } from '../../services';
 import Image from '../../components/image';
 import RelatedArtists from '../../components/relatedArtists';
 import classNames from 'classnames';
+import Player from '../../components/player';
 
 import styles from './style.css';
 let cx = classNames.bind(styles);
@@ -18,7 +19,11 @@ class Artist extends React.Component {
             loading: true,
             related: [{
                 loading: true
-            }]
+            }],
+            toptracks: [{
+                loading: true
+            }],
+            track: ''
         };
     }
 
@@ -28,22 +33,31 @@ class Artist extends React.Component {
 
     getData(id) {
         this.setState({related: [], loading: true});
-        console.log('loading');
         getArtist(id).then(artist => {
             this.setState({ artist, loading: false })
         });
         getRelatedArtists(id).then(artists => {
             this.setState({ related: artists, loading: false  })
         });
+        getArtistTopTracks(id).then(tracks => {
+            console.log(tracks);
+            this.setState({
+                toptracks: tracks,
+                track: tracks[0].preview_url,
+                loading: false
+            })
+        });
     }
 
     render() {
+        console.log(this.state);
         const artist = this.state.artist;
         const artistImageClass = cx({
           'artistImage':true,
           'artistImage--loading': this.state.loading,
           'artistImage--animate': !this.state.loading
         });
+
         return (
             <div key={this.props.params.artistId}>
                 <div className="searchAgain">
@@ -56,6 +70,7 @@ class Artist extends React.Component {
                 <div className="genres">
                     {artist.genres}
                 </div>
+                <Player track={this.state.track} />
                 <RelatedArtists artists={this.state.related} handleclick={this.getData.bind(this)} />
             </div>
         );
