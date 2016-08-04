@@ -4,7 +4,7 @@ import React from 'react';
 import Image from '../image';
 import { Link } from 'react-router';
 
-import './style.css';
+import styles from './style.css';
 
 const RelatedArtists = props => {
 
@@ -14,16 +14,16 @@ const RelatedArtists = props => {
 
     const related = props.artists.map((artist, index) => {
         return (
-            <Link key={index} to={`/artists/${artist.id}`} onClick={updateArtist.bind(this, artist.id)}  className="relatedArtist">
-                <h2 className="relatedArtist__title">{artist.name}</h2>
+            <Link key={index} to={`/artists/${artist.id}`} onClick={updateArtist.bind(this, artist.id)}  className={styles.relatedArtist}>
+                <h2 className={styles.relatedArtist__title}>{artist.name}</h2>
                 <Image url={artist.images} />
             </Link>
         );
     });
     return (
         <div>
-            <div className="related">
-                <h2 className="related__title">Related artists</h2>
+            <div className={styles.related}>
+                <h2 className={styles.related__title}>Related artists</h2>
                 {related}
             </div>
         </div>

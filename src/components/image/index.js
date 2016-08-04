@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import './style.css';
+import styles from './style.css';
 
 const Image = props => {
     if(typeof props.url === 'undefined') {

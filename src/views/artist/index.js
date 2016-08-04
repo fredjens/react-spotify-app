@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { getArtist, getRelatedArtists, getArtistTopTracks } from '../../services';
 import Image from '../../components/image';
 import RelatedArtists from '../../components/relatedArtists';
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import Player from '../../components/player';
 
 import styles from './style.css';
@@ -52,22 +52,23 @@ class Artist extends React.Component {
     render() {
         console.log(this.state);
         const artist = this.state.artist;
+
         const artistImageClass = cx({
-          'artistImage':true,
+          'artistImage': true,
           'artistImage--loading': this.state.loading,
           'artistImage--animate': !this.state.loading
         });
 
         return (
             <div key={this.props.params.artistId}>
-                <div className="searchAgain">
+                <div className={styles.searchAgain}>
                     <Link to="/">Search</Link>
                 </div>
                 <div className={artistImageClass}>
                     <Image url={artist.images} key={artist.images} />
                  </div>
-                <h1 className="artistName">{artist.name}</h1>
-                <div className="genres">
+                <h1 className={styles.artistName}>{artist.name}</h1>
+                <div className={styles.genres}>
                     {artist.genres}
                 </div>
                 <Player track={this.state.track} />

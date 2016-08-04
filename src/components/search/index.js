@@ -5,7 +5,7 @@ import { Router, Link } from 'react-router';
 import { searchArtists } from '../../services';
 import SearchResult from '../searchResult';
 
-import './style.css';
+import styles from './style.css';
 
 class Search extends React.Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class Search extends React.Component {
             <div className='search'>
                 <input
                     type="text"
-                    className="largeInput"
+                    className={styles.largeInput}
                     placeholder="Search Artist"
                     value={this.state.inputValue}
                     onChange={this.handleChange.bind(this)}
