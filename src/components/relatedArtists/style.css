@@ -1,27 +1,23 @@
 
-.related {
-    position: absolute;
-    top: 40vh;
-
-    &__title {
-        margin-left: -4rem;
-        margin-top: 4rem;
-        font-size: .8rem;
-        letter-spacing: 2px;
-        color: rgba(85, 07, 205, .8);
-        transform: rotate(-90deg);
-        position: fixed;
-        font-weight: 100;
-    }
+.container {
+    margin-top: 55vh;
 }
 
-.relatedArtist {
+.title {
+    font-size: 1rem;
+    color: rgba(85, 07, 205, .8);
+    font-weight: 100;
+    margin-bottom: 3rem;
+}
+
+.artist {
     width: 175px;
     height: 175px;
     overflow: hidden;
     float: left;
     position: relative;
     border-radius: 50%;
+    margin: 0 2rem 2rem 0;
 
     &:before {
         content: '';
@@ -31,35 +27,37 @@
         right: 0;
         bottom: 0;
         background: rgba(35, 07, 85, .8);
-        transition: background 200ms;
+        transition: background 400ms;
     }
 
-    &:hover:before {
-        background: var(--green);
+    &:hover {
+        &:before {
+            background: var(--green);
+        }
     }
 
-    &__title {
-        margin-top: 0;
-        font-weight: 400;
-        font-size: 1rem;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        text-align: center;
-        margin-top: 100px;
-        color: var(--white);
-
-    }
-
-    @for $i from 1 to 20 {
+    @for $i from 1 to 21 {
         animation: fadeInImage 400ms forwards cubic-bezier(.05,.7,.26,.99);
-        animation-delay: 800ms;
         opacity: 0;
         &:nth-child($i)  {
             animation-delay: calc($i * 200)ms;
-            margin-left: calc($i * 20)px;
         }
     }
+}
+
+.artistTitle {
+    margin-top: 0;
+    font-weight: 400;
+    font-size: .9rem;
+    margin: 0 2rem;
+    max-width: 100px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 75px;
+    color: var(--white);
+
 }
 
 @keyframes fadeInImage {

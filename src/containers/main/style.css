@@ -1,0 +1,12 @@
+
+.title {
+    position: fixed;
+    top: 2.5rem;
+    z-index: 50;
+}
+
+.search {
+    position: fixed;
+    right: 2.5rem;
+    top: 2.5rem;
+}

@@ -1,3 +1,4 @@
+
 .largeInput {
     color: var(--white);
     background: none;
@@ -8,7 +9,7 @@
     font-weight: 800;
     position: fixed;
     bottom: 50%;
-    animation: fadeInSearch 1000ms;
+    animation: fadeInSearch 700ms;
 
     &::placeholder {
         color: var(--grayDark);

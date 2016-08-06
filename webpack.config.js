@@ -6,7 +6,7 @@ var forLoop =  require('postcss-for');
 
 var HtmlWebpack = require('html-webpack-plugin');
 var html = new HtmlWebpack({
-    template: __dirname + '/src/index.html',
+    template: __dirname + '/src/html/index.html',
     filename: 'index.html',
     inject: 'body'
 });

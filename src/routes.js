@@ -2,9 +2,9 @@
 import React from 'react';
 import { Router, Route, hashHistory, IndexRoute} from 'react-router';
 
-import Main from './views/main';
-import Home from './views/home';
-import Artist from './views/artist';
+import Main from './containers/main';
+import Home from './containers/home';
+import Artist from './containers/artist';
 
 const routes = (
     <Router history={hashHistory}>

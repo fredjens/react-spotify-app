@@ -1,6 +1,5 @@
 
-
-.artistImage {
+.image {
     position: fixed;
     height: 100vh;
     right: 0;
@@ -18,31 +17,30 @@
         bottom: 0;
         background: rgba(0, 0, 0, .75);
     }
+
+    &--animate {
+        animation: fadeIn 10000ms cubic-bezier(.05,.7,.26,.99);
+    }
+
+    &--loading {
+        content: 'loading...';
+        position: absolute;
+        font-size: 4rem;
+        background: black;
+    }
 }
 
-.artistImage--animate {
-    animation: fadeIn 10000ms cubic-bezier(.05,.7,.26,.99);
-}
-
-.artistImage--loading {
-    content: 'loading...';
-    position: absolute;
-    font-size: 4rem;
-    background: black;
-}
-
-.artistName {
-    position: fixed;
+.title {
     top: 10%;
     width: 100%;
     font-size: 6rem;
     font-weight: 800;
-}
-
-.searchAgain {
+    opacity: 0;
+    margin-bottom: .5rem;
+    line-height: 1.25;
+    margin-top: 15vh;
     position: fixed;
-    right: 2.5rem;
-    top: 2.5rem;
+    animation: fadeInText 8000ms 200ms cubic-bezier(.05,.7,.26,.99) forwards;
 }
 
 @keyframes fadeIn {
@@ -58,7 +56,7 @@
     }
 }
 
-@keyframes fadeOut {
+@keyframes fadeInText {
     from {
         opacity: 0;
     }
@@ -69,6 +67,10 @@
 
 .genres {
     position: fixed;
-    top: 18%;
+    top: 20vh;
+    width: 100%;
+    opacity: 0;
+    font-size: 1rem;
     color: var(--grayDark);
+    animation: fadeInText 2000ms 500ms cubic-bezier(.05,.7,.26,.99) forwards;
 }

@@ -2,12 +2,12 @@
 import React from 'react';
 import { Router, Link } from 'react-router';
 
-import './style.css';
+import styles from './style.css';
 
 const SearchResult = props => {
     const listItems = props.artists.map((artist) => {
         return (
-            <li key={artist.name}>
+            <li key={artist.name} className={styles.item}>
                 <Link to={`/artists/${artist.id}`}>
                     {artist.name}
                 </Link>
@@ -16,7 +16,7 @@ const SearchResult = props => {
     });
     return (
         <div>
-            <ul>
+            <ul className={styles.container}>
                 {listItems}
             </ul>
         </div>

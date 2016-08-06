@@ -4,7 +4,6 @@ import React from 'react';
 import { Router, Link } from 'react-router';
 import { searchTrack } from '../../services';
 import SearchResult from '../searchResult';
-import annyang from 'annyang';
 
 class SearchTrack extends React.Component {
     constructor(props) {

@@ -6,7 +6,6 @@ const searchTrack = function(query) {
     .then(function(response) {
         return response.json()
     }).then(function(json) {
-        console.log(json.tracks);
         return json.tracks;
     })
     .catch(function(err) {

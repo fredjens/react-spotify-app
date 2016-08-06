@@ -19,8 +19,3 @@ a {
         color: var(--green);
     }
 }
-
-.title {
-    position: fixed;
-    top: 2.5rem;
-}

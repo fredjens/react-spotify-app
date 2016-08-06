@@ -1,13 +1,19 @@
 
 import React from 'react';
+import ReactPlayer from 'react-player';
+
+import styles from './style.css';
 
 const Player = props => {
+    if(props.url !== 'undefined') {
         return (
-            <audio autoPlay>
-                <source src={props.track}
-                type='audio/mpeg' />
-            </audio>
+            <ReactPlayer
+                className={styles.player}
+                url={props.track}
+                playing
+            />
         )
+    }
 };
 
 export default Player;

@@ -7,7 +7,6 @@ const getArtistTopTracks = function(id) {
         return response.json()
     })
     .then(function(json) {
-        console.log(json);
         return json.tracks;
     })
     .catch(function(err) {
