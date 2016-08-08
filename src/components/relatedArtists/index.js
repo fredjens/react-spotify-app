@@ -17,7 +17,7 @@ const RelatedArtists = props => {
         return (
             <Link key={index} to={`/artists/${artist.id}`} onClick={updateArtist.bind(this, artist.id)}  className={styles.artist}>
                 <h2 className={styles.artistTitle}>
-                    <TypeWriter typing={1}>{artist.name}</TypeWriter>
+                    {artist.name}
                 </h2>
                 <Image url={artist.images} />
             </Link>
