@@ -1,4 +1,28 @@
 
-.image {
+.image img {
     width: 100%;
+}
+
+.loading img {
+    visibility: hidden;
+}
+
+.loading::after {
+    content: 'loading';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(var(--green), green);
+    opacity: .5;
+    animation: rotate 500ms linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

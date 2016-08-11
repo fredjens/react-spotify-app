@@ -1,18 +1,50 @@
 
-import React from 'react';
-
+import React, { PropTypes } from 'react';
+import classNames from 'classnames/bind';
 import styles from './style.css';
 
-const Image = props => {
-    if (!props.url || !props.url[0] || !props.url[0].url) {
-        return <div>No image...</div>;
+const cx = classNames.bind(styles);
+
+export default class Image extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+        };
+        this.loaded = this.loaded.bind(this);
     }
 
-    return (
-        <picture key={props.url[0].url}>
-            <img src={props.url[0].url} className={styles.image} />
-        </picture>
-    )
-};
+    loaded() {
+        console.log('loaded');
+        this.setState({
+            loading: false,
+        });
+    }
 
-export default Image;
+    render() {
+        const imageClass = cx({
+            image: true,
+            loading: this.state.loading,
+        });
+
+        if (!this.props.url || !this.props.url[0] || !this.props.url[0].url) {
+            return <div>No image...</div>;
+        }
+
+        const url = this.props.url[0].url;
+
+        return (
+            <picture key={url} className={imageClass}>
+                <img
+                    src={url}
+                    alt={url}
+                    onLoad={this.loaded}
+                />
+            </picture>
+        );
+    }
+}
+
+Image.propTypes = {
+    url: React.PropTypes.array,
+};
