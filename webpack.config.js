@@ -1,15 +1,12 @@
-'use strict'
+/* eslint-disable */
 
 var cssnext = require('postcss-cssnext');
 var variables = require("./src/variables");
 var forLoop =  require('postcss-for');
-
+var CarteBlanche = require('carte-blanche');
+var ReactPlugin = require('carte-blanche-react-plugin');
+// var SourcePlugin = require('carte-blanche-source-plugin');
 var HtmlWebpack = require('html-webpack-plugin');
-var html = new HtmlWebpack({
-    template: __dirname + '/src/html/index.html',
-    filename: 'index.html',
-    inject: 'body'
-});
 
 module.exports = {
     entry: [
@@ -32,7 +29,20 @@ module.exports = {
             }
         ]
     },
-    plugins: [html],
+    plugins: [
+        new HtmlWebpack({
+            template: __dirname + '/src/html/index.html',
+            filename: 'index.html',
+            inject: 'body'
+        }),
+        new CarteBlanche({
+            componentRoot: './src/components',
+            filter: /.*\.jsx$/,
+            plugins: [
+                new ReactPlugin()
+            ]
+        }),
+    ],
     postcss: function () {
         return [
             forLoop,
